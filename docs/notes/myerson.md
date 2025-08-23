@@ -49,4 +49,6 @@ $$
 
 我们会发现，当$c_i(.)$正规时，$\bar{c_i}\equiv c_i$；当$c_i(.)$非正规时，$\bar{c_i}$是最接近$c_i(.)$的增函数。**核心就是用到函数的凸包的性质**
 
-## 我们可以认为Vickrey拍卖是Optimal Auction的其中一种情况，但很多满足Optimal Auction(即迈尔森引理)的机制的结果与Vickrey拍卖千差万别。
+---
+
+我们可以认为Vickrey拍卖是Optimal Auction的其中一种情况，但很多满足Optimal Auction(即迈尔森引理)的机制的结果与Vickrey拍卖千差万别。
