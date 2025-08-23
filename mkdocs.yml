@@ -7,7 +7,9 @@ site_description: 这是我的个人主页，记录学习、项目与生活。
 # 导航栏菜单（左侧）
 nav:
   - 首页: index.md
-  - 笔记: notes.md
+  - 笔记:
+      - 迈尔森论文: notes/myerson.md
+
 
 # 主题设置：Material for MkDocs
 theme:
@@ -18,28 +20,41 @@ theme:
     primary: indigo
     accent: pink
   # 头像和标题
-  #logo: assets/images/avatar.png  # 可选：放一张头像图片在 docs/assets/images/
+  #logo: assets/images/avatar.png
   #favicon: assets/images/favicon.png
 
   # 功能开关
   feature:
-    tabs: true                    # 顶部标签页支持
-    navigation.expand: true       # 自动展开导航
-    search.suggest: true          # 搜索建议
+    tabs: true
+    navigation.expand: true
+    search.suggest: true
+  features:
+    - search.suggest
+    - search.highlight
+    - content.code.annotate
+    - navigation.tabs
+    - navigation.sections
 
 # 插件
 plugins:
   - search
 
-# 额外静态资源（比如自定义 CSS）
+# 额外静态资源
 extra_css:
   - assets/css/custom.css
 
-# Markdown 扩展（增强排版能力）
+# 数学公式支持 (MathJax)
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+# Markdown 扩展
 markdown_extensions:
-  - admonition                  # 支持警告框、提示框
+  - admonition
   - pymdownx.details
   - pymdownx.emoji
   - pymdownx.highlight
   - pymdownx.inlinehilite
   - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
