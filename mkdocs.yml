@@ -9,6 +9,7 @@ nav:
   - 首页: index.md
   - 笔记:
       - 迈尔森论文: notes/myerson.md
+      - ML第一章: notes/part1.md
 
 
 # 主题设置：Material for MkDocs
