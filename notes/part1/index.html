@@ -729,7 +729,9 @@ $$</p>
 <img alt="网图" src="../pic/4.png" /></p>
 <p>比如在上图中绿色点就是训练点，黑色点就是预测点。我们实际上就是赋予离预测点较近的训练点更高的权重：</p>
 <p>最小化：
-<span class="arithmatex">\(<span class="arithmatex">\(\sum_i w^{(i)} (y^{(i)} - \theta^T x^{(i)})^2\)</span>\)</span></p>
+$$ 
+\sum_i w^{(i)} (y^{(i)} - \theta^T x^{(i)})^2
+$$</p>
 <p>往往w取：
 $$
 w^{(i)} = \exp\left(-\frac{(x^{(i)} - x)^2}{2\tau^2}\right)
