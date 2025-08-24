@@ -453,6 +453,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      局部加权线性回归
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -541,6 +550,15 @@
   <a href="#mle" class="md-nav__link">
     <span class="md-ellipsis">
       最大似然估计（MLE）与最小二乘关系
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      局部加权线性回归
     </span>
   </a>
   
@@ -706,6 +724,18 @@ $$</p>
 - \sum_{i=1}^{n} (y^{(i)} - \theta^T x^{(i)})^2
 \]</div>
 <p>我们看到最小二乘回归实际上就是在执行最大似然估计。</p>
+<h2 id="_4">局部加权线性回归</h2>
+<p>它是一种非参数算法（每次拟合都需要重新根据查询点周围情况调整权重）
+<img alt="网图" src="../pic/4.png" /></p>
+<p>比如在上图中绿色点就是训练点，黑色点就是预测点。我们实际上就是赋予离预测点较近的训练点更高的权重：</p>
+<p>最小化：
+<span class="arithmatex">\(<span class="arithmatex">\(\sum_i w^{(i)} (y^{(i)} - \theta^T x^{(i)})^2\)</span>\)</span></p>
+<p>往往w取：
+$$
+w^{(i)} = \exp\left(-\frac{(x^{(i)} - x)^2}{2\tau^2}\right)
+$$</p>
+<p>其中<span class="arithmatex">\(\tau\)</span>控制权重随距离增加的衰减速度。</p>
+<p>ps:前面的LMS方法作为线性方法，训练完成后只需要保留<span class="arithmatex">\(\theta\)</span>即可，而现在的这种非参数方法需要保留训练数据。</p>
 
 
 
