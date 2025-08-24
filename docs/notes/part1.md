@@ -1,4 +1,4 @@
-## 基本定义
+# 基本定义
 $x^{(i)}$：输入变量
 
 $y^{(i)}$:输出变量；或者叫做目标变量
@@ -40,4 +40,32 @@ J(\theta) = \frac{1}{2} \sum_{i=1}^{n} \left( h_\theta(x^{(i)}) - y^{(i)} \right
 $$
 
 
+## LMS方法
+
+前面已经定义了一个损失函数（最小二乘损失函数），我们优化的过程当然就希望优化这个损失函数——沿着损失函数梯度的反方向优化自然是一种不错的方法，所以有：
+$$
+\theta_j := \theta_j - \alpha \frac{\partial}{\partial \theta_j} J(\theta)
+$$
+
+带入前面对$J(\theta)$的定义中，我们自然就能得到对于只有1个训练样本的情况，更新规则为：
+$$
+\theta_j := \theta_j + \alpha \left( y^{(i)} - h_\theta(x^{(i)}) \right) x_j^{(i)}
+$$
+
+对于有n个样本的情况：
+$$
+\theta_j := \theta_j + \alpha \sum_{i=1}^{n} \left( y^{(i)} - h_\theta(x^{(i)}) \right) x_j^{(i)}
+$$
+
+其中j=0,1，...,d。每一轮需要对每个d更新直到收敛。
+
+>  This method looks
+at every example in the entire training set on every step, and is called batch
+gradient descent.
+
+由于我们定义的损失函数是一个**凸二次函数**，局部最优解就是全局最优解，所以可以避免进入局部最优解。
+
+![p12图](./pic/2.png)
+
+上图就表示了一个收敛轨迹（圈圈是等高线）
 
