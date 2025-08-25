@@ -8,8 +8,12 @@ site_description: 这是我的个人主页，记录学习、项目与生活。
 nav:
   - 首页: index.md
   - 笔记:
-      - 迈尔森论文: notes/myerson.md
-      - ML第一章: notes/part1.md
+      - 机器学习:
+          - ML第一章: notes/part1.md
+          - ML第二章: notes/part2.md
+  - 论文阅读:
+      - 最优拍卖: notes/myerson.md
+      - 基于模型的定价: notes/mbp.md  
 
 
 # 主题设置：Material for MkDocs
