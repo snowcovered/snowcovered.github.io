@@ -947,7 +947,13 @@ p_{\epsilon^s,\lambda}(\delta_2, D).
 <p><img alt="p11图" src="../pic/301.png" /></p>
 <p>如下所示，我们做出约束线：</p>
 <p><img alt="p12图" src="../pic/302.png" /></p>
-<p>按照斜率从大到小我们可以编号为<span class="arithmatex">\(l_1,l_2,...,l_4\)</span>，斜率可以编号为<span class="arithmatex">\(\Delta_1,\Delta_2,...,\Delta_4\)</span>,注意的是，斜率的编号与点的编号是不对应的。</p>
+<p>按照斜率从大到小我们可以编号为<span class="arithmatex">\(l_1,l_2,...,l_4\)</span>，斜率可以编号为<span class="arithmatex">\(\Delta_1,\Delta_2,...,\Delta_4\)</span>,需要注意的是，斜率的编号与点的编号是不对应的。</p>
+<p>我们的动态规划是从最后一个点开始的，比如说一共有m个点，其中<span class="arithmatex">\(OPT(t,\Delta_i)\)</span>指的就是，考虑到第<span class="arithmatex">\(t,t+1,...,m\)</span>个点，且所有定价点都在l_i这条线下方的定价的最优解（数值上）。一个<strong><em>关键点在于</em></strong>，当i&lt;j时，<span class="arithmatex">\(OPT(t,\Delta_i) \leq OPT(t,\Delta_j)\)</span>。</p>
+<p>我们从最后一个点（也就是第4个点）开始看，显然<span class="arithmatex">\(OPT(4,\Delta_1)=OPT(4,\Delta_2)=OPT(4,\Delta_3)=v4\)</span>,<span class="arithmatex">\(OPT(4,\Delta_3)=\Delta_3 \times v_4\)</span>。</p>
+<p>显然我们回到倒数第二个点（也就是第3个点）开始看，这时由于<span class="arithmatex">\(l_1,l_2,l_3\)</span>都在<span class="arithmatex">\(A_3\)</span>上方了，那就意味着<span class="arithmatex">\(OPT(3,\Delta_1)\)</span>(或2,3)要取到的最大值必然是<span class="arithmatex">\(OPT(3,\Delta_4)\)</span>和<span class="arithmatex">\(OPT(4,\Delta_1)\)</span>（或2,3）中的最大的一个。思考如下：此处的点可能与后面的点不兼容，也可能兼容，那么当i&lt;j时，<span class="arithmatex">\((3,\Delta_i)\)</span>兼容的
+一定会在<span class="arithmatex">\((3,\Delta_j)\)</span>处兼容；当不兼容出现时，比如此时<span class="arithmatex">\(OPT(3,\Delta_1)\)</span>也可以抛弃掉该点，因此<span class="arithmatex">\(OPT(3,\Delta_1)\)</span>必定是<span class="arithmatex">\(OPT(3,\Delta_4)\)</span>和<span class="arithmatex">\(OPT(3,\Delta_1)\)</span>的较大者，对于<span class="arithmatex">\(OPT(3,\Delta_1)\)</span>,自然就是
+<span class="arithmatex">\(4v3+\Delta_3×v_4\)</span></p>
+<p>以此更新OPT最终更新到OPT(1,\Delta_1),我们就找到了最优解。</p>
 <h1 id="_8">回顾梳理</h1>
 <p>据我的回忆，机制执行过程简单概括如下：</p>
 <ol>
@@ -955,36 +961,10 @@ p_{\epsilon^s,\lambda}(\delta_2, D).
 <li>利用动态规划计算最优价格。</li>
 <li>一手交钱，一手交货。</li>
 </ol>
-<!--简单来说就是调研市场，绘制价格-噪声曲线，然后卖-->
-
-<!--我们可以大致认为经纪人需要训练模型-->
-
-<!--可以认为版本化就是对一个东西卖出不同的版本-->
-
-<!--买家可以挑选自己喜欢的误差函数-->
-
-<!--定价依赖的东西还挺多的-->
-
-<!--我们可以认为中间商最终呈现error主要是为了方便买家选择-->
-
-<!--w就是从协方差矩阵当中生成的向量-->
-
-<!-- Lemma 1
-注意error-monotone的定义，然后构造一个非单调函数与常数函数超过1个交点就可以证明套利
-
- -->
-
-<!-- lemma2 是无偏的也很好证明 因为我们添加的噪声就是均值为0的高斯噪声  -->
-
-<!-- lemma 3 噪声的构造本身就可以说明问题 -->
-
-<!-- th 4   这个证明中先证明了严格凸函数的性质，但是这是显然的  
-然后用这个严格凸函数的性质证明了
-
-
-我们需要注意到th 4 的刻画是任意的，并不只是局限在s误差函数上
--->
-
+<p>&lt;!-- th 4   这个证明中先证明了严格凸函数的性质，但是这是显然的<br />
+然后用这个严格凸函数的性质证明了</p>
+<p>我们需要注意到th 4 的刻画是任意的，并不只是局限在s误差函数上
+--&gt;</p>
 <!--  th5 构造一个反例就可以证明其中一边的方向的正确性  另一边可以用数学归纳法证明,先证明1-套利违反假设，然后递推出去即可   核心在cramer 
 
 但是th5 只是在平方损失上衡量的
