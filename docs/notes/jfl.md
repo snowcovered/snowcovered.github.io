@@ -35,25 +35,25 @@ $$
 强调shapley coverage对模型的影响相较于噪声很小。所以在后面的调查和动态规划中shapley coverage事实上都没有出现。
 
 ### 中间商
-$$
+
 \begin{equation}
 \arg\max_{\langle p(\epsilon_1), \dots, p(\epsilon_l) \rangle} 
 \prod_{k=1}^{l} \prod_{j=1}^{m'} 
 p(\epsilon_k) \cdot I(t_{mj} = M_k) \cdot I\big(p(\epsilon_k) \le v_j\big),
 \end{equation}
-\\ 
+
 
 \begin{equation}
 \text{s.t. } \; p(\epsilon_{k_1} + \epsilon_{k_2}) \le p(\epsilon_{k_1}) + p(\epsilon_{k_2}), 
 \quad \epsilon_{k_1}, \epsilon_{k_2} > 0,
 \end{equation}
-\\
+
 
 \begin{equation}
 0 < p(\epsilon_{k_1}) \le p(\epsilon_{k_2}), 
 \quad 0 < \epsilon_{k_1} \le \epsilon_{k_2}.
 \end{equation}
-$$
+
 
 与MBP不同的是，它有多个的采样点。从这里可以再次说明，这里只考虑“噪声”无套利，而没有shapley coverage无套利，因为文中也说难以处理。
 
@@ -70,15 +70,19 @@ $$
 ### 补偿
 
 
-$$
+
 \begin{equation}
 \arg\max_{S \subseteq \{D_1, \dots, D_n\}} \;
 \prod_{i : D_i \in S} SV_i,
 \end{equation}
-\\
+
+
+
 \begin{equation}
 \text{s.t. } \; \prod_{i : D_i \in S} c_i(\epsilon) \le MB.
 \end{equation}
-$$
+
 
 其实就是一个0-1背包问题。作者分别使用伪多项式算法进行精确解求解，用先装入单位价值最高物品的方法求解，以及一种结合随机性和单位最高价值的方法求解。
+
+> Tip:这里的shapley coverage与论文前面定义的shapley coverage有所不同，这里只要求“单个人的shapley之和最大”，而前面要求的是联盟的shapley最大，这是买家的要求。

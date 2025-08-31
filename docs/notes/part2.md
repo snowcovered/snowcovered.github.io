@@ -57,7 +57,7 @@ $$
 感知机算法对于二分类问题更加naive,直接以$h_\theta(x)$正负分类：
 $$
 h_\theta(x)=g(\theta^T x)=\begin{cases}
-1 \ \ if \ \ z\geq 0\\0 \ \ if \ \ z < 0
+1 \ \ if \ \ z\geq 0 \\\ 0 \ \ if \ \ z < 0
 \end{cases}
 $$
 
