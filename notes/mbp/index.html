@@ -898,10 +898,10 @@ p_{\epsilon^s,\lambda}(\delta_2, D).
 \overline{p}(x) \;=\; p_{\epsilon,\lambda}\left(\tfrac{1}{\phi(x)}, D\right).
 \]</div>
 <p>满足次可加性和单调两个条件就实现了无套利，<strong>显然，对于平方误差，<span class="arithmatex">\(\phi(x)\equiv x\)</span></strong>。</p>
-<p>现在为止，我们真正建立了<span class="arithmatex">\(\epsilon \leftrightarrow p\)</span>的约束关系。</p>
+<p>现在为止，我们真正建立了<span class="arithmatex">\(\delta \leftrightarrow p\)</span>的约束关系。</p>
 <h2 id="_4">简化并解决</h2>
 <h3 id="_5">原始问题分析</h3>
-<p>我们通过市场调研得到了不同买家对于不同质量模型的需求，那么问题实际上就是一个带约束的线性规划问题：</p>
+<p>我们通过市场调研得到了不同买家对于不同质量模型的需求，那么问题实际上就是一个带约束的优化问题：</p>
 <div class="arithmatex">\[
 \begin{aligned}
 \max_{\hat{p}} \quad &amp; T\big(\hat{p}(a_1), \ldots, \hat{p}(a_n)\big) \\
@@ -953,7 +953,7 @@ p_{\epsilon^s,\lambda}(\delta_2, D).
 <p>显然我们回到倒数第二个点（也就是第3个点）开始看，这时由于<span class="arithmatex">\(l_1,l_2,l_3\)</span>都在<span class="arithmatex">\(A_3\)</span>上方了，那就意味着<span class="arithmatex">\(OPT(3,\Delta_1)\)</span>(或2,3)要取到的最大值必然是<span class="arithmatex">\(OPT(3,\Delta_4)\)</span>和<span class="arithmatex">\(OPT(4,\Delta_1)\)</span>（或2,3）中的最大的一个。思考如下：此处的点可能与后面的点不兼容，也可能兼容，那么当i&lt;j时，<span class="arithmatex">\((3,\Delta_i)\)</span>兼容的
 一定会在<span class="arithmatex">\((3,\Delta_j)\)</span>处兼容；当不兼容出现时，比如此时<span class="arithmatex">\(OPT(3,\Delta_1)\)</span>也可以抛弃掉该点，因此<span class="arithmatex">\(OPT(3,\Delta_1)\)</span>必定是<span class="arithmatex">\(OPT(3,\Delta_4)\)</span>和<span class="arithmatex">\(OPT(3,\Delta_1)\)</span>的较大者，对于<span class="arithmatex">\(OPT(3,\Delta_1)\)</span>,自然就是
 <span class="arithmatex">\(4v3+\Delta_3×v_4\)</span></p>
-<p>以此更新OPT最终更新到OPT(1,\Delta_1),我们就找到了最优解。</p>
+<p>以此更新OPT最终更新到<span class="arithmatex">\(OPT(1,\Delta_1)\)</span>,我们就找到了最优解。</p>
 <blockquote>
 <p>不是很方便描述，具体还是得看原文最后一页</p>
 </blockquote>

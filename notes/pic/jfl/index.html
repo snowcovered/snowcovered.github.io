@@ -22,7 +22,7 @@
     
     
       
-        <title>Jfl - Yxy 的个人主页</title>
+        <title>Dealer: An End-to-End Model Marketplace with Differential Privacy - Yxy 的个人主页</title>
       
     
     
@@ -73,6 +73,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#dealer-an-end-to-end-model-marketplace-with-differential-privacy" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -103,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Jfl
+              Dealer: An End-to-End Model Marketplace with Differential Privacy
             
           </span>
         </div>
@@ -556,6 +561,100 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mbp" class="md-nav__link">
+    <span class="md-ellipsis">
+      相较于MBP的改进
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      各方利益探讨
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="各方利益探讨">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据提供者
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      买家
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      中间商
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      利益分配
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="利益分配">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      收费
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      补偿
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -571,23 +670,75 @@
 
 
 
-  <h1>Jfl</h1>
-
-<!--   三方会谈的形式 -->
-
-<!--ALgo1 用蒙特卡洛方法得到一个近似的shapley值 -->
-
-<!-- Algo2 两次添加噪声，在训练阶段和之后都添加噪声     -->
-
-<!--3： 构建一个点空间-->
-
-<!-- 4:简单贪心-->
-
-<!--5: 甚至只是一个简单的01背包问题-->
-
-<!--  6使用贪心的方法来进行求解 -->
-
-<!--  7:结合一下前面的所有内容-->
+<h1 id="dealer-an-end-to-end-model-marketplace-with-differential-privacy">Dealer: An End-to-End Model Marketplace with Differential Privacy</h1>
+<h2 id="mbp">相较于MBP的改进</h2>
+<ol>
+<li>
+<p>完善了整个模型的架构</p>
+<ol>
+<li>允许多个数据提供者提供他们的数据集，并根据shapley和隐私泄露情况进行分配。</li>
+<li>对买家有多个价格点进行调研，更符合实际情况。</li>
+<li>broker真正承担了枢纽的作用。</li>
+</ol>
+</li>
+<li>
+<p>从查分隐私角度思考了噪声的作用</p>
+</li>
+</ol>
+<h2 id="_1">各方利益探讨</h2>
+<h3 id="_2">数据提供者</h3>
+<p>提供数据会获得补偿，天经地义，让我们看看这是如何刻画的。</p>
+<div class="arithmatex">\[
+c_i(\epsilon) = b_i \cdot s_i(\epsilon)
+\]</div>
+<p>其中<span class="arithmatex">\(b_i\)</span>是和shapley正比的一个数值，<span class="arithmatex">\(s_i(\epsilon)\)</span>是和噪声（差分隐私）相关的量。</p>
+<blockquote>
+<p>Tip:论文中的差分隐私是通过<span class="arithmatex">\((\delta,\epsilon)\)</span>对来控制的，但是文中其实是固定了<span class="arithmatex">\(\delta\)</span>。所以<span class="arithmatex">\(\epsilon\)</span>越大，噪声就越小，因而这里的<span class="arithmatex">\(\epsilon\)</span>就和MBP的<span class="arithmatex">\(\frac{1}{\delta}\)</span>类似。</p>
+</blockquote>
+<h3 id="_3">买家</h3>
+<div class="arithmatex">\[
+P(B_j, M) = V_j \cdot 
+\frac{1}{1 + e^{-\delta_j \big( CR(M) - \theta_j \big)}} \cdot
+\frac{1}{1 + e^{-\gamma_j (\epsilon - \eta_j)}}
+\]</div>
+<p>可以认为<span class="arithmatex">\(V_j\)</span>是卖家的原始估值，后面两个影响因子分别是shapley coverage和噪声。但是本文一直都在
+强调shapley coverage对模型的影响相较于噪声很小。所以在后面的调查和动态规划中shapley coverage事实上都没有出现。</p>
+<h3 id="_4">中间商</h3>
+<p>$$
+\begin{equation}
+\arg\max_{\langle p(\epsilon_1), \dots, p(\epsilon_l) \rangle} 
+\prod_{k=1}^{l} \prod_{j=1}^{m'} 
+p(\epsilon_k) \cdot I(t_{mj} = M_k) \cdot I\big(p(\epsilon_k) \le v_j\big),
+\end{equation}
+\ </p>
+<p>\begin{equation}
+\text{s.t. } \; p(\epsilon_{k_1} + \epsilon_{k_2}) \le p(\epsilon_{k_1}) + p(\epsilon_{k_2}), 
+\quad \epsilon_{k_1}, \epsilon_{k_2} &gt; 0,
+\end{equation}
+\</p>
+<p>\begin{equation}
+0 &lt; p(\epsilon_{k_1}) \le p(\epsilon_{k_2}), 
+\quad 0 &lt; \epsilon_{k_1} \le \epsilon_{k_2}.
+\end{equation}
+$$</p>
+<p>与MBP不同的是，它有多个的采样点。从这里可以再次说明，这里只考虑“噪声”无套利，而没有shapley coverage无套利，因为文中也说难以处理。</p>
+<h2 id="_5">利益分配</h2>
+<p>利益分配主要包含broker对买家的收费和broker对数据提供者的补偿。</p>
+<h3 id="_6">收费</h3>
+<p>文中的动态规划颇为巧妙，比MBP的好很多。利用到子结构的最优解只可能会在多项式个离散点当中，所以就把
+状态存在这些子结构当中（并且能保证最优解一定会用这些子结构构成），把所有子结构计算一遍就得到了最终的结果，非常值得学习。</p>
+<h3 id="_7">补偿</h3>
+<div class="arithmatex">\[
+\begin{equation}
+\arg\max_{S \subseteq \{D_1, \dots, D_n\}} \;
+\prod_{i : D_i \in S} SV_i,
+\end{equation}
+\\
+\begin{equation}
+\text{s.t. } \; \prod_{i : D_i \in S} c_i(\epsilon) \le MB.
+\end{equation}
+\]</div>
+<p>其实就是一个0-1背包问题。作者分别使用伪多项式算法进行精确解求解，用先装入单位价值最高物品的方法求解，以及一种结合随机性和单位最高价值的方法求解。</p>
 
 
 
