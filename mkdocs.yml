@@ -15,6 +15,7 @@ nav:
       - 最优拍卖: notes/myerson.md
       - 基于模型的定价: notes/mbp.md  
       - Dealer: notes/jfl.md  
+      - 查询无套利定价: notes/query1.md  
 
 
 # 主题设置：Material for MkDocs

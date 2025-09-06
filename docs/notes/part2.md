@@ -30,7 +30,7 @@ $$
 将x,y等视为已知量，我们可以表示出对于n个样本的似然函数为：
 
 $$
-L(\theta)=p(\vec{v}| X ;\theta)
+L(\theta)=p(\vec{y}| X ;\theta)
 $$
 
 用对数展开求解：
