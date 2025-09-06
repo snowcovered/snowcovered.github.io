@@ -52,9 +52,10 @@ extra_css:
 
 # 数学公式支持 (MathJax)
 extra_javascript:
+  - javascripts/mathjax-config.js   # 先加载配置
   - https://polyfill.io/v3/polyfill.min.js?features=es6
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-
+  - https://unpkg.com/mathjax@3/es5/tex-chtml.js  # 再加载 MathJax 主文件
+  
 # Markdown 扩展
 markdown_extensions:
   - admonition
