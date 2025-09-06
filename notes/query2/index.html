@@ -15,6 +15,8 @@
         <link rel="canonical" href="https://snowcovered.github.io/notes/query2/">
       
       
+        <link rel="prev" href="../query1/">
+      
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +24,7 @@
     
     
       
-        <title>Query2 - Yxy 的个人主页</title>
+        <title>查询无套利的实验 - Yxy 的个人主页</title>
       
     
     
@@ -73,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#revenue-maximization-for-query-pricing" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -103,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Query2
+              查询无套利的实验
             
           </span>
         </div>
@@ -225,10 +232,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../myerson/" class="md-tabs__link">
           
   
@@ -447,26 +456,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -479,7 +493,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             论文阅读
@@ -578,6 +592,39 @@
 
               
             
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    查询无套利的实验
+    
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -602,6 +649,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -617,10 +666,11 @@
 
 
 
-  <h1>Query2</h1>
-
-<p>存储是指数的原因在于子集个数本身就是指数的</p>
-<p>一个关键的关键是b小于等于m</p>
+<h1 id="revenue-maximization-for-query-pricing">Revenue Maximization for Query Pricing</h1>
+<p>不太重要的论文，它提出了一个近似界比较糟糕的算法——The Layering Algorithm，近似界是O(B),其中B是在所有冲突集中出现过最多次的顶点的出现次数。但是文章指出在实际运行中它能取得较好的运行时间与收益的平衡。</p>
+<blockquote>
+<p>ps:这个论文的实验说明LPIP收入最优，但是运行时间最长。</p>
+</blockquote>
 
 
 
