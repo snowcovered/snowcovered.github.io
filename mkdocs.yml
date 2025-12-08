@@ -18,6 +18,8 @@ nav:
       - 查询无套利定价: notes/query1.md  
       - 查询无套利的实验: notes/query2.md  
       - 大模型菜单: notes/d2425.pdf
+  - 求解器-RL:
+      - RL for B&B: RL1.md 
 
 
 # 主题设置：Material for MkDocs
