@@ -20,6 +20,7 @@ nav:
       - 大模型菜单: notes/d2425.pdf
   - 求解器-RL:
       - RL for B&B: notes/RL1.md 
+      - Improverd RL for B&B: notes/RL2.md 
 
 
 # 主题设置：Material for MkDocs
