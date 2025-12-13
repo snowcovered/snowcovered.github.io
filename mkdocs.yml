@@ -21,6 +21,7 @@ nav:
   - 求解器-RL:
       - RL for B&B: notes/RL1.md 
       - Improverd RL for B&B: notes/RL2.md 
+      - Retrospective Trajectories for B&B: notes/RL3.md 
 
 
 # 主题设置：Material for MkDocs
