@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="这是我的个人主页，记录学习、项目与生活。">
+        <meta name="description" content="最是人间留不住，朱颜辞镜花辞树。">
       
       
         <meta name="author" content="Yxy">
@@ -76,6 +76,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#reinforcement-learning-for-variable-selection-in-a-branch-and-bound-algorithm" class="md-skip">
+          跳转至
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -827,6 +832,26 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Improverd RL for B&B
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -844,6 +869,86 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        传统方法
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        改进的强化学习
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="改进的强化学习">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RL设计（仍然传统）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        训练框架（有所创新）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        效果
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -874,6 +979,77 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        传统方法
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        改进的强化学习
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="改进的强化学习">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RL设计（仍然传统）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        训练框架（有所创新）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        效果
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -890,9 +1066,73 @@
 
 
 
-  <h1>Improverd RL for B&B</h1>
-
-
+<h1 id="reinforcement-learning-for-variable-selection-in-a-branch-and-bound-algorithm">Reinforcement Learning for Variable Selection in a Branch and Bound Algorithm</h1>
+<p><span style="color:red"> 对原始的RL方法做了一些trick方面的优化，但与上一个有很大的不同     </span></p>
+<h2 id="_1">传统方法</h2>
+<ul>
+<li>strong-branch 略</li>
+<li>persudo-cost ： </li>
+</ul>
+<p>比如说当我们在有一些历史分支变量选择(min)时的记录，我们选择了在LP当中取值为<span class="arithmatex">\(x_i\)</span>的变量,其分别可以取整为 <span class="arithmatex">\(\lceil x_i \rceil\)</span>，<span class="arithmatex">\(\lfloor x_i \rfloor\)</span>,相较于LP值，其带来的目标函数变化量为：
+$$
+PC_i^{+}=\frac{z_{0}-z_{up}}{ \lceil x \rceil -x_i}     \quad  PC_i^{-}=\frac{z_{0}-z_{up}}{ \lfloor x \rfloor -x_i}
+$$</p>
+<p>于是我选择预期目标变化量最大的变量进行分支：</p>
+<div class="arithmatex">\[
+score_j= max(PC_i^{+}(\lceil x_i \rceil - x_i),PC_i^{-}( x_i - \lfloor x_i \rfloor ))
+\]</div>
+<p>由于不需要实际执行分支，所以成本会低很多，但是需要前期的好经验支持。</p>
+<h2 id="_2">改进的强化学习</h2>
+<h3 id="rl">RL设计（仍然传统）</h3>
+<ul>
+<li>状态 ：将节点按照 Gasse 等人提出的二分图来表示。</li>
+<li>
+<p>动作：即从<span class="arithmatex">\(a \in A\)</span>中选择一个动作，a与变量x是一一对应的。</p>
+</li>
+<li>
+<p>状态转移，$ p(s_{t+1}| s_t,a_t)<span class="arithmatex">\(由节点选择策略\)</span>\pi$确定。</p>
+</li>
+<li>
+<p>奖励：自上一个状态以来的对偶积分
+$$
+F(\tau)=\tau c^\tau x -\int_{t=0}^{\tau} z_t^* dt  \
+r(a_i|s_t)=F(t+1)-F(t)
+$$</p>
+</li>
+</ul>
+<p><img alt="网图" src="../pic/rl2p1.png" /></p>
+<ul>
+<li>
+<p>下一个状态：下一个B&amp;B节点的二分图表示</p>
+</li>
+<li>
+<p>终止标志当前episode 是否结束。</p>
+</li>
+</ul>
+<blockquote>
+<p>总之我们RL设计这一块并未看到它有什么非常创新的地方，总结一下就是传统的RL方法+ecole的状态表示方式。</p>
+</blockquote>
+<h3 id="_3">训练框架（有所创新）</h3>
+<p><img alt="alt text" src="../pic/rl2p2.png" /></p>
+<p>本框架有两个创新之处，其一在于引入了优势网络的设计，如下所示：
+$$
+\mathcal{L}(\theta) = 
+\mathbb{E}\left[ \left( r + \gamma \max_{a'} Q^t(s', a'; \theta^t) - Q(s, a; \theta) \right)^2 \right] 
++ 
+\mathbb{E}\left[ \left( Q^s(s, a; \theta^s) - Q(s, a; \theta) \right)^2 \right]
+$$</p>
+<p>于是现在一共就有了所谓的三个网络：
+1. oline network:用于动作选择。
+2. target network :用于动作价值评估。
+3. superior network ：用于向高性能策略对齐。</p>
+<p>其中前两个网络就是传统的时序差分，而最后一个网络是以结果为导向，是在检验当前策略的实际效果后，如果下过更好，那么就向当前策略对齐。</p>
+<p>另一个创新之处是对经验回放缓存（实际就是常规cahce）做了一点处理：
+* 首先收集一些非常优秀的训练数据加入到cache中（我个人呢推测可能是最优解或者SB）
+* 若某段轨迹带来的回报超过一个阈值我就把其中的数据(1.e.四元组)加到cache中，用于以后学习。
+* 数据依照lru更新，但是优秀预训练数据不会被移除。</p>
+<h2 id="_4">效果</h2>
+<p>这种启发是的东西往往缺乏数学证明，只能看执行效果，作者认为是比较优秀的：</p>
+<p><img alt="alt text" src="../pic/rl2p3.png" /></p>
 
 
 
