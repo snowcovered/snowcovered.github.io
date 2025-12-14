@@ -863,6 +863,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retrospective Trajectories for B&B
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -879,6 +897,86 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        作者试图缓解的几个问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        作者的解决办法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="作者的解决办法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么要这样做
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rl_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关于RL的新东西
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实验效果
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -912,6 +1010,75 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        作者试图缓解的几个问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        作者的解决办法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="作者的解决办法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么要这样做
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rl_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关于RL的新东西
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实验效果
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -929,6 +1096,38 @@
 
 <h1 id="rl">回溯轨迹作为RL学习样本</h1>
 <p><span style="color:red"> 本文的创新点非常tricky,几乎就是说明了我们可以重构出轨迹的片段作为训练的样本   </span></p>
+<h2 id="_1">作者试图缓解的几个问题</h2>
+<p>作者提到，将RL用于分支定界的变量选择依然有以下几个问题：</p>
+<ol>
+<li>
+<p>轨迹过长：学习过程中糟糕的决策会带来巨大的步数，可能会导致奖励稀疏（，信用分配困难，以及回报方差过。</p>
+</li>
+<li>
+<p>状态-动作空间庞大，难以学习其中的更优轨迹。</p>
+</li>
+<li>
+<p>部分可观测性。这是由于节点选择和变量选择本身是深度绑定的，但是写作该论文是节点与变量选择依然是分开的，导致变量选择时很难预测树的状态。</p>
+</li>
+</ol>
+<h2 id="_2">作者的解决办法</h2>
+<p>他认为说我们可以从一段现成的轨迹中还原出好的学习材料，而不必纠结于轨迹原本是如何生成的，如下图所示：
+<img alt="alt text" src="../pic/rl3p1.png" /></p>
+<p>上图中蓝色和红色的点都是进行过节点选择的点（且一次节点选择前必然经过一次变量选择），其中红色的是被剪枝的节点。作者在这里随便采用了任意节点选择策略，得到左图轨迹。</p>
+<p>然后从被剪枝节点出发，作者还原出<em>在同一个子树上的变量原则路径和决策路径</em>，即右图所示的四条路径。</p>
+<h3 id="_3">为什么要这样做</h3>
+<p>首先，这样部分缓解了可观测性的问题：因为节点所在子树内的后续状态（如下界、新增约束等）与其当前状态高度相关，因此比从整棵搜索树其他位置跳转而来的状态更具可预测性和可观测性。</p>
+<p>其次，由于重构的轨迹很碎片化，所以另外两个问题也有所缓解（似乎很trivial）。</p>
+<h3 id="rl_1">关于RL的新东西</h3>
+<p>首先，奖励函数变成了尽量结束我这条路径（更快的剪枝）。因为选取的都是以剪枝为重点的路径，所以可以给每一步-1的奖励，给到达终点的一步0的奖励即可。</p>
+<p>状态依然采用 Gasse二分图表示，节点选择采用的是SCIP默认策略，采用的强化学习方式也是传统的Q-learning。</p>
+<h3 id="_4">实验效果</h3>
+<p><img alt="alt text" src="../pic/rl3p2.png" /></p>
+<p>可以几个好处分别是：</p>
+<ol>
+<li>a.收敛更快</li>
+<li>b&amp;c. 求解时节点比较少</li>
+<li>在42%的实例上超过了IL。</li>
+</ol>
 
 
 
