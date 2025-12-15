@@ -27,7 +27,7 @@
     
     
       
-        <title>LEARNING TO BRANCH WITH OFFLINE REINFORCEMENT LEARNING - Yxy 的个人主页</title>
+        <title>Top k Candidates for B&B - Yxy 的个人主页</title>
       
     
     
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              LEARNING TO BRANCH WITH OFFLINE REINFORCEMENT LEARNING
+              Top k Candidates for B&B
             
           </span>
         </div>
@@ -898,7 +898,7 @@
   <span class="md-ellipsis">
     
   
-    LEARNING TO BRANCH WITH OFFLINE REINFORCEMENT LEARNING
+    Top k Candidates for B&B
   
 
     
@@ -916,7 +916,7 @@
   <span class="md-ellipsis">
     
   
-    LEARNING TO BRANCH WITH OFFLINE REINFORCEMENT LEARNING
+    Top k Candidates for B&B
   
 
     
@@ -1163,15 +1163,15 @@
 \]</div>
 <p>但我们注意到我们对未出现的(s,a)估计<span class="arithmatex">\(Q^{\pi}(s,a)\)</span>是不准确的，可能对OOD的情况产生过于乐观的估计，导致错误诱导<span class="arithmatex">\(\pi\)</span>的生成。</p>
 <h2 id="rcac">RCAC 算法</h2>
-<p>很简单，就是在传统的基础上加了一个topk的初步筛选过程，作者的初筛是根据(.|s)时不同a的对偶界改变量(i.e. <span class="arithmatex">\(c^Tx^{LP}_{t+1}-c^Tx^{LP}_{t}\)</span> )这一奖励函数来设定的。作者希望训练一个采样函数<span class="arithmatex">\(G_{\omega}(a|s)\)</span>从而使对偶界改变更多的变量有更大的采样机会，如下：
-$$
+<p>很简单，就是在传统的基础上加了一个topk的初步筛选过程，作者的初筛是根据(.|s)时不同a的对偶界改变量(i.e. <span class="arithmatex">\(c^Tx^{LP}_{t+1}-c^Tx^{LP}_{t}\)</span> )这一奖励函数来设定的。作者希望训练一个采样函数<span class="arithmatex">\(G_{\omega}(a|s)\)</span>从而使对偶界改变更多的变量有更大的采样机会，如下：</p>
+<div class="arithmatex">\[
 \arg \min_{\omega}
-\;\mathbb{E}<em>{(s,a,r(s,a)) \sim \mathcal{D}}
+\;\mathbb{E}_{(s,a,r(s,a)) \sim \mathcal{D}}
 \left[
--\big(\lambda \,\mathbf{1}</em>{r(s,a) &gt; \zeta} + 1\big)
+-\big(\lambda \,\mathbf{1}_{r(s,a) &gt; \zeta} + 1\big)
 \log G_{\omega}(a \mid s)
 \right]
-$$</p>
+\]</div>
 <p>其中$\lambda <span class="arithmatex">\(是我们给对偶界改进超过阈值\)</span>\zeta<span class="arithmatex">\(的“好动作”的权重，
 而\)</span>\zeta$一般设置为0，即能有对偶界的改进就说明它已经足够好了。另外，从该函数我们也可以发现它对“好动作”是一视同仁的，因此仅仅是发挥一个初筛作用。</p>
 <p>经过初筛后脱颖而出的动作，我们给它<span class="arithmatex">\(Q(a|s)\)</span>的估计，否则我们认为它是不可靠的，给它一个<span class="arithmatex">\(-\delta\)</span>的惩罚，于是可以构造出<span class="arithmatex">\(\bar{Q}\)</span>:</p>
@@ -1182,29 +1182,29 @@ Q(s, a), &amp; \text{if } a \in \text{top-}k\!\left(G_{\omega}(a \mid s)\right),
 -\delta, &amp; \text{otherwise}.
 \end{cases}
 \]</div>
-<p>于是作者就得到了经过初筛的Bellman方程迭代过程：
-$$
+<p>于是作者就得到了经过初筛的Bellman方程迭代过程：</p>
+<div class="arithmatex">\[
 \theta \leftarrow \arg \min_{\theta}
-\;\mathbb{E}<em>{(s,a,s') \sim \mathcal{D}}
+\;\mathbb{E}_{(s,a,s') \sim \mathcal{D}}
 \left[
 \left(
 r(s,a)
-+ \gamma \,\mathbb{E}</em>{a' \sim \pi_{\phi}(\cdot \mid s')}
++ \gamma \,\mathbb{E}_{a' \sim \pi_{\phi}(\cdot \mid s')}
 \left[
-\bar{Q}<em>{\theta'}(s', a')
+\bar{Q}_{\theta'}(s', a')
 \right]
-- Q</em>{\theta}(s,a)
+- Q_{\theta}(s,a)
 \right)^2
 \right],
-$$</p>
-<p>$$
+\]</div>
+<div class="arithmatex">\[
 \phi \leftarrow \arg \max_{\phi}
-\;\mathbb{E}<em>{s \sim \mathcal{D},\, a \sim \pi</em>{\phi}(\cdot \mid s)}
+\;\mathbb{E}_{s \sim \mathcal{D},\, a \sim \pi_{\phi}(\cdot \mid s)}
 \left[
 \bar{Q}_{\theta}(s, a)
 \right].
-$$
-整个算法可总结为下：</p>
+\]</div>
+<p>整个算法可总结为下：</p>
 <p><img alt="alt text" src="../pic/rl4p1.png" /></p>
 <h2 id="_4">实验效果</h2>
 <blockquote>
