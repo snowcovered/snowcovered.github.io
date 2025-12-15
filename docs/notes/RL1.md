@@ -1,4 +1,4 @@
-# Reinforcement Learning for Variable Selection in a Branch and Bound Algorithm
+# Reinforcement Learning for Variable Selection in a Branch and Bound Algorithm (20)
 
 <span style="color:red">我们可以认为这是B&B与RL开始的起点</span>
 
