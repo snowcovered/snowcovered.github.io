@@ -30,6 +30,7 @@ $$
 ## RCAC 算法
 
 很简单，就是在传统的基础上加了一个topk的初步筛选过程，作者的初筛是根据(.|s)时不同a的对偶界改变量(i.e. $c^Tx^{LP}_{t+1}-c^Tx^{LP}_{t}$ )这一奖励函数来设定的。作者希望训练一个采样函数$G_{\omega}(a|s)$从而使对偶界改变更多的变量有更大的采样机会，如下：
+
 $$
 \arg \min_{\omega}
 \;\mathbb{E}_{(s,a,r(s,a)) \sim \mathcal{D}}
@@ -55,6 +56,7 @@ Q(s, a), & \text{if } a \in \text{top-}k\!\left(G_{\omega}(a \mid s)\right), \\
 $$
 
 于是作者就得到了经过初筛的Bellman方程迭代过程：
+
 $$
 \theta \leftarrow \arg \min_{\theta}
 \;\mathbb{E}_{(s,a,s') \sim \mathcal{D}}
@@ -77,6 +79,7 @@ $$
 \bar{Q}_{\theta}(s, a)
 \right].
 $$
+
 整个算法可总结为下：
 
 ![alt text](./pic/rl4p1.png)
