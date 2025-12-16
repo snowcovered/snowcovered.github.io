@@ -1163,7 +1163,7 @@
 \]</div>
 <p>但我们注意到我们对未出现的(s,a)估计<span class="arithmatex">\(Q^{\pi}(s,a)\)</span>是不准确的，可能对OOD的情况产生过于乐观的估计，导致错误诱导<span class="arithmatex">\(\pi\)</span>的生成。</p>
 <h2 id="rcac">RCAC 算法</h2>
-<p>很简单，就是在传统的基础上加了一个topk的初步筛选过程，作者的初筛是根据(.|s)时不同a的对偶界改变量(i.e. <span class="arithmatex">\(c^Tx^{LP}_{t+1}-c^Tx^{LP}_{t}\)</span> )这一奖励函数来设定的。作者希望训练一个采样函数<span class="arithmatex">\(G_{\omega}(a|s)\)</span>从而使对偶界改变更多的变量有更大的采样机会，如下：</p>
+<p>很简单，就是在传统的基础上加了一个topk的初步筛选过程，作者的初筛是根据(.|s)时不同a的对偶界改变量(i.e. <span class="arithmatex">\(c^Tx^{LP}_{t+1}-c^Tx^{LP}_{t}\)</span> )这一奖励函数来设定的。作者希望训练一个得分函数<span class="arithmatex">\(G_{\omega}(a|s)\)</span>从而使对偶界改变更多的变量有更高的得分，如下：</p>
 <div class="arithmatex">\[
 \arg \min_{\omega}
 \;\mathbb{E}_{(s,a,r(s,a)) \sim \mathcal{D}}
