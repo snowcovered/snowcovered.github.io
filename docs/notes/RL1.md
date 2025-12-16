@@ -70,7 +70,10 @@ $$
 > 证明：首先，我们假设活动节点为$o \in O$(规模为k),关闭节点为$c \in C$(规模为m), 我们记 $V^{\pi}(s|\zeta,\eta)$是以s为根的子树规模，那么该规模完全由以下三者决定：
 
  1. 该子树所采用的分支策略$\pi$
- 2. 其他子树当中发现的原始上界 $ \zeta= (\zeta_{c1} \cup \zeta_{c2} \cup ...\cup \zeta_{cm} )\bigcup_{j < i} \zeta_j$
+ 2. 其他子树当中发现的原始上界
+ 
+  $$ \zeta= (\zeta_{c1} \cup \zeta_{c2} \cup ...\cup \zeta_{cm} )\bigcup_{j < i} \zeta_j
+  $$
 
  3. 节点选择策略 $\zeta$
 
