@@ -1269,6 +1269,7 @@
 
 
 <h1 id="reinforcement-learning-for-variable-selection-in-a-branch-and-bound-algorithm-20">Reinforcement Learning for Variable Selection in a Branch and Bound Algorithm (20)</h1>
+<p><a href="https://arxiv.org/pdf/2005.10026">论文链接</a></p>
 <p><span style="color:red">我们可以认为这是B&amp;B与RL开始的起点</span></p>
 <h2 id="_1">前言</h2>
 <p>区别于以往的IL或者其他启发式选择分支变量的方法，RL实际上聚焦于从0开始学习如何对分支变量进行选择（事实上也可以在已有参数上不从0开始，会收敛更快）。总之，很重要的一点是，不同MILP问题是由不同<strong>特征</strong>的，因此不同类问题P相当于从不同分布<span class="arithmatex">\(D\)</span>当中抽样（电力、某些背包都相当于从不同D中抽样），标准形式即：
@@ -1296,7 +1297,7 @@ S \to A, \\
 s \mapsto \pi(s) = a.
 \end{cases}
 \]</div>
-<p>上述策略是<strong>确定性</strong>策略，意味着在策略 <span class="arithmatex">\(\pi\)</span>下给定s输出唯一（我觉得可能直接采用softmax后最高的那个）。</p>
+<p>上述策略是<strong>确定性</strong>策略，意味着在策略 <span class="arithmatex">\(\pi\)</span>下给定s输出唯一。</p>
 <h3 id="_3">目标函数</h3>
 <p>我们称 <span class="arithmatex">\(\Pi\)</span>为有<span class="arithmatex">\(\pi\)</span> 诱导的执行器，<span class="arithmatex">\(\Pi(p)\)</span>即在实例p上的执行结果，<span class="arithmatex">\(\mu(\Pi(p))\)</span>就是我们在某个指标上测评执行结果，我们的实例是从分布D当中抽取的，所以目标函数显然：</p>
 <div class="arithmatex">\[
@@ -1363,6 +1364,9 @@ V = |C| + V^{\pi_1} \left( s_1 \,\Big|\, \{z_0\},\; \eta = \text{DFS} \right) + 
 \]</div>
 <h3 id="_8">优先经验回放</h3>
 <p>粗俗的来说“经验回放”就是把你跑的结果存起来，然后进行离线的更新。优先就是指把错的多的拿来进行优化，是一个偏序的关系。我们希望把<span class="arithmatex">\(|Q-\hat{Q}|\)</span>比较大的先进行优化，但注意到Q的级别差距是悬殊的，所以采样概率定义为</p>
+<div class="arithmatex">\[
+p_j \propto \frac{\left| Q^{\pi_{\theta_j}}(s_j, a_j) - \hat{Q}(s_j, a_j; \theta_j) \right|}{Q^{\pi_{\theta_j}}(s_j, a_j)}
+\]</div>
 <h2 id="_9">神经网络设计</h2>
 <p>提出了MDA,其价值有待后续了解。</p>
 <h2 id="_10">实验</h2>
