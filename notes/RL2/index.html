@@ -1152,11 +1152,15 @@ score_j= max(PC_i^{+}(\lceil x_i \rceil - x_i),PC_i^{-}( x_i - \lfloor x_i \rflo
 <p>状态转移，$ p(s_{t+1}| s_t,a_t)$ 由节点选择策略 <span class="arithmatex">\(\pi\)</span> 确定。</p>
 </li>
 <li>
-<p>奖励：自上一个状态以来的对偶积分
-$$
-F(\tau)=\tau c^\tau x -\int_{t=0}^{\tau} z_t^* dt  \
-r(a_i|s_t)=F(t+1)-F(t)
-$$</p>
+<p>奖励：自上一个状态以来对偶积分的<strong>减少量</strong>。<br />
+  对偶积分定义为：
+  $$
+  F(T) = T \cdot c^\top x^<em> - \int_0^T z_t^</em> \, dt
+  $$
+  其中 $ c^\top x^<em> $ 为 MILP 的最优目标值（实践中用当前最佳可行解近似），$ z_t^</em> $ 为时刻 $ t $ 的全局对偶界。  即时奖励为：
+  $$
+  r(a_i|s_t) = -\big( F(t_{\text{curr}}) - F(t_{\text{prev}}) \big)
+  $$</p>
 </li>
 </ul>
 <p><img alt="网图" src="../pic/rl2p1.png" /></p>
