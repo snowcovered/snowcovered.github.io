@@ -1,4 +1,6 @@
-# Reinforcement Learning for Variable Selection in a Branch and Bound Algorithm (22)
+#  Improved RL for Learning to Branch (22)
+
+[论文链接](https://arxiv.org/pdf/2201.06213)
 
 <span style="color:red"> 对原始的RL方法做了一些trick方面的优化，但与上一个有很大的不同     </span>
 

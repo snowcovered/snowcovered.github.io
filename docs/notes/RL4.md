@@ -1,5 +1,7 @@
 # LEARNING TO BRANCH WITH OFFLINE REINFORCEMENT LEARNING  (24)
 
+[论文链接](https://openreview.net/forum?id=uHVIxJGwr4)
+
 <span style="color:red"> 这篇文章的TOP-k思想还是比较有看点的。 </span>
 
 ## 以往离线强化学习学习方法

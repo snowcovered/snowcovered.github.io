@@ -1,5 +1,7 @@
 # Reinforcement Learning for Variable Selection in a Branch and Bound Algorithm (20)
 
+[论文链接](https://arxiv.org/pdf/2005.10026)
+
 <span style="color:red">我们可以认为这是B&B与RL开始的起点</span>
 
 ## 前言
@@ -34,7 +36,7 @@ s \mapsto \pi(s) = a.
 \end{cases}
 $$
 
-上述策略是**确定性**策略，意味着在策略 $\pi$下给定s输出唯一（我觉得可能直接采用softmax后最高的那个）。
+上述策略是**确定性**策略，意味着在策略 $\pi$下给定s输出唯一。
 
 ### 目标函数 
 
@@ -71,7 +73,7 @@ $$
 
  1. 该子树所采用的分支策略$\pi$
  2. 其他子树当中发现的原始上界
- 
+
   $$ \zeta= (\zeta_{c1} \cup \zeta_{c2} \cup ...\cup \zeta_{cm} )\bigcup_{j < i} \zeta_j
   $$
 
@@ -119,6 +121,11 @@ $$
 ### 优先经验回放 
 
 粗俗的来说“经验回放”就是把你跑的结果存起来，然后进行离线的更新。优先就是指把错的多的拿来进行优化，是一个偏序的关系。我们希望把$|Q-\hat{Q}|$比较大的先进行优化，但注意到Q的级别差距是悬殊的，所以采样概率定义为
+
+$$
+p_j \propto \frac{\left| Q^{\pi_{\theta_j}}(s_j, a_j) - \hat{Q}(s_j, a_j; \theta_j) \right|}{Q^{\pi_{\theta_j}}(s_j, a_j)}
+$$
+
 
 ## 神经网络设计
 
