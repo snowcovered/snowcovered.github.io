@@ -13,7 +13,7 @@ p \in \mathcal{P}:
 \min\limits_{x \in \mathbb{R}^n} \; c^\top x \\\
 \text{s.t.} 
 & Ax \le b, \\\
-& x_J \in \{0,1\}^{|J|}, \\\
+& x_J \in Z^{|J|}, \\\
 & x_{-J} \in \mathbb{R}^{\,n-|J|}.
 \end{cases}
 $$
