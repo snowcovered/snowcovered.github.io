@@ -18,6 +18,7 @@ nav:
       - 查询无套利定价: notes/query1.md  
       - 查询无套利的实验: notes/query2.md  
       - 大模型菜单: notes/d2425.pdf
+      - Optimal Contest for Recommender Systems : notes/RS.pdf
   - 求解器-RL:
       - RL for B&B: notes/RL1.md 
       - Improverd RL for B&B: notes/RL2.md 
