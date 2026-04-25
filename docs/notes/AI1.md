@@ -51,6 +51,7 @@ $$
 
 **市场总需求 $D$ 为：**
 $D(\boldsymbol{\alpha}) = A + \lambda w L N - \ell L N \bar{\alpha}$
+
 其中 $\bar{\alpha}$ 为所有企业的平均自动化率。
 
 ### 3. 企业利润
@@ -83,7 +84,7 @@ $$
 
 > **个人见解：** 这里其实揭示了文章的核心，需求损失l被N分摊了，所以企业选择$\alpha$的时候总是会过大，即“竞争市场使个人选择相较于集体最优产生了扭曲”。
 
-下面我们会给出最重要的一个proposition: 
+下面是全文最重要的一个proposition: 
 现在定义自动化阈值为：
 
 $$
@@ -152,7 +153,9 @@ $$
 ### 4. 工人股权参与 
 
 - **核心逻辑**：企业将利润的 $\epsilon$ 比例分给工人，由此形成一个反馈闭环（不动点问题）：
-  $$D = A + \lambda \left[ \text{wage income} + \epsilon \sum\nolimits_{i} \pi_i \right]$$
+  $$
+  D = A + \lambda \left[ \text{wage income} + \epsilon \sum\nolimits_{i} \pi_i \right]
+  $$
    其中 $\sum_i \pi_i = D - \sum_i C_i$
 - **效果**：当工人持有股权时，裁员损失的一部分会通过利润分红回流到需求侧。这会增加企业感知到的自动化代价，从而缩小楔子。
 - **局限性**：由于需求存在向竞争对手“泄漏”的问题，除非 $\lambda \epsilon = 1$（这在现实中极难实现），否则无法根除外部性。
