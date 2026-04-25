@@ -1456,48 +1456,62 @@ $$ </p>
 <p>失业工人通过再就业或转移支付可恢复 <span class="arithmatex">\(\eta\)</span> 比例的收入，因此每失业一人，该行业损失 <span class="arithmatex">\((1-\eta)w\)</span> 的收入。</p>
 </li>
 </ul>
-<p><strong>定义单位任务的需求损失 <span class="arithmatex">\(\ell\)</span>：</strong>
-$<span class="arithmatex">\(\ell := \lambda (1 - \eta) w\)</span>$</p>
+<p><strong>定义单位任务的需求损失 <span class="arithmatex">\(\ell\)</span>：</strong></p>
+<div class="arithmatex">\[
+\ell := \lambda (1 - \eta) w
+\]</div>
 <p><strong>市场总需求 <span class="arithmatex">\(D\)</span> 为：</strong>
-$<span class="arithmatex">\(D(\boldsymbol{\alpha}) = A + \lambda w L N - \ell L N \bar{\alpha}\)</span>$
+<span class="arithmatex">\(D(\boldsymbol{\alpha}) = A + \lambda w L N - \ell L N \bar{\alpha}\)</span>
 其中 <span class="arithmatex">\(\bar{\alpha}\)</span> 为所有企业的平均自动化率。</p>
 <h3 id="3">3. 企业利润</h3>
-<p>在完全竞争定价下，单家企业的收入为 <span class="arithmatex">\(\text{Rev}_i = D / N\)</span>。结合成本函数，企业 <span class="arithmatex">\(i\)</span> 的利润函数可写为：
-$<span class="arithmatex">\(\pi_i = \Pi_0 + L \left( s \alpha_i - \ell \bar{\alpha} - \frac{k}{2} \alpha_i^2 \right)\)</span>$
-为了研究纳什均衡，我们将自身决策与对手策略分离：
-$<span class="arithmatex">\(\pi_i = \Pi_0 + L \left[ \alpha_i \left( s - \frac{\ell}{N} \right) - \frac{k}{2} \alpha_i^2 - \frac{\ell}{N} \sum_{j \neq i} \alpha_j \right]\)</span>$</p>
+<p>在完全竞争定价下，单家企业的收入为 <span class="arithmatex">\(\text{Rev}_i = D / N\)</span>。结合成本函数，企业 <span class="arithmatex">\(i\)</span> 的利润函数可写为：</p>
+<div class="arithmatex">\[
+\pi_i = \Pi_0 + L \left( s \alpha_i - \ell \bar{\alpha} - \frac{k}{2} \alpha_i^2 \right)
+\]</div>
+<p>为了研究纳什均衡，我们将自身决策与对手策略分离：</p>
+<div class="arithmatex">\[
+\pi_i = \Pi_0 + L \left[ \alpha_i \left( s - \frac{\ell}{N} \right) - \frac{k}{2} \alpha_i^2 - \frac{\ell}{N} \sum_{j \neq i} \alpha_j \right]
+\]</div>
 <blockquote>
 <p><strong>个人见解：</strong>  这样做其实就是为了后续求一阶导就能直接找到最优解。</p>
 </blockquote>
 <h3 id="4">4. 目标函数</h3>
 <p>作者通过线性加权定义了社会总福利 <span class="arithmatex">\(S\)</span>，其中 <span class="arithmatex">\(\mu\)</span> 为工人的权重：
-$<span class="arithmatex">\(S(\mu) = \mu \mathcal{W} + (1 - \mu) \mathcal{K}\)</span>$
+<span class="arithmatex">\(S(\mu) = \mu \mathcal{W} + (1 - \mu) \mathcal{K}\)</span>
 其中 <span class="arithmatex">\(\mathcal{W}\)</span> 为工人总收入，<span class="arithmatex">\(\mathcal{K}\)</span> 为全行业总利润。即使在 <span class="arithmatex">\(\mu = 0\)</span>（仅关注企业利润）的情况下，由于外部性的存在，纳什均衡下的自动化率依然会显著高于集体最优水平。</p>
 <h3 id="5">5. 均衡求解</h3>
-<p>我们对企业收益求一阶导，得到：
-$$
+<p>我们对企业收益求一阶导，得到：</p>
+<div class="arithmatex">\[
 \frac{\partial \pi_i}{\partial \alpha_i} = L \left( s - \frac{\ell}{N} - k \alpha_i \right)
-$$</p>
+\]</div>
 <blockquote>
 <p><strong>个人见解：</strong> 这里其实揭示了文章的核心，需求损失l被N分摊了，所以企业选择<span class="arithmatex">\(\alpha\)</span>的时候总是会过大，即“竞争市场使个人选择相较于集体最优产生了扭曲”。</p>
 </blockquote>
 <p>下面我们会给出最重要的一个proposition: 
-现在定义自动化阈值为：
-$$N^* := \frac{\ell}{s} = \frac{\lambda(1-\eta)w}{w-c} $$</p>
+现在定义自动化阈值为：</p>
+<div class="arithmatex">\[
+N^* := \frac{\ell}{s} = \frac{\lambda(1-\eta)w}{w-c} 
+\]</div>
 <ul>
 <li>如果 <span class="arithmatex">\(N \le N^*\)</span>，则没有企业进行自动化（<span class="arithmatex">\(\alpha^{NE} = 0\)</span>）。</li>
 <li>如果 <span class="arithmatex">\(N &gt; N^*\)</span>（等价于 <span class="arithmatex">\(s &gt; \ell/N\)</span>）：<ul>
-<li>(i) 每家企业的严格占优策略（strictly dominant strategy）为：
-    $<span class="arithmatex">\(\alpha^{NE} = \min((s - \ell/N)/k, 1)\)</span>$</li>
-<li>(ii) 合作最优解（cooperative optimum）为：
-    $<span class="arithmatex">\(\alpha^{CO} = \min(\max(0, (s - \ell)/k), 1)\)</span>$</li>
-<li>(iii) 如果 <span class="arithmatex">\(\ell &lt; s &lt; k + \ell/N\)</span>，那么 <span class="arithmatex">\(\alpha^{NE}\)</span> 和 <span class="arithmatex">\(\alpha^{CO}\)</span> 均为内点解（interior），且过度自动化楔子（over-automation wedge）为：
-    $<span class="arithmatex">\(\alpha^{NE} - \alpha^{CO} = \frac{\ell(1 - 1/N)}{k} &gt; 0\)</span>$
-    该值随 <span class="arithmatex">\(N\)</span> 和 <span class="arithmatex">\(\ell\)</span> 严格递增，随 <span class="arithmatex">\(k\)</span> 严格递减。</li>
-<li>(iv) 如果 <span class="arithmatex">\(s \le \ell\)</span>，则 <span class="arithmatex">\(\alpha^{CO} = 0\)</span>，此时楔子即为 <span class="arithmatex">\(\alpha^{NE}\)</span>：<ul>
-<li>若 <span class="arithmatex">\(s &lt; k + \ell/N\)</span>，则 <span class="arithmatex">\(\alpha^{NE} = (s - \ell/N)/k\)</span>，故楔子为 <span class="arithmatex">\((s - \ell/N)/k\)</span>。</li>
-<li>若 <span class="arithmatex">\(k + \ell/N \le s\)</span>，则 <span class="arithmatex">\(\alpha^{NE} = 1\)</span>，故楔子为 1。</li>
-</ul>
+<li>
+<p>(i) 每家企业的严格占优策略（strictly dominant strategy）为：</p>
+<p>$$
+\alpha^{NE} = \min((s - \ell/N)/k, 1)
+$$
+    * (ii) 合作最优解（cooperative optimum）为：</p>
+<p>$$
+\alpha^{CO} = \min(\max(0, (s - \ell)/k), 1)
+$$
+    * (iii) 如果 <span class="arithmatex">\(\ell &lt; s &lt; k + \ell/N\)</span>，那么 <span class="arithmatex">\(\alpha^{NE}\)</span> 和 <span class="arithmatex">\(\alpha^{CO}\)</span> 均为内点解（interior），且过度自动化楔子（over-automation wedge）为：</p>
+<p>$$
+\alpha^{NE} - \alpha^{CO} = \frac{\ell(1 - 1/N)}{k} &gt; 0
+$$
+该值随 <span class="arithmatex">\(N\)</span> 和 <span class="arithmatex">\(\ell\)</span> 严格递增，随 <span class="arithmatex">\(k\)</span> 严格递减。
+    * (iv) 如果 <span class="arithmatex">\(s \le \ell\)</span>，则 <span class="arithmatex">\(\alpha^{CO} = 0\)</span>，此时楔子即为 <span class="arithmatex">\(\alpha^{NE}\)</span>：
+* 若 <span class="arithmatex">\(s &lt; k + \ell/N\)</span>，则 <span class="arithmatex">\(\alpha^{NE} = (s - \ell/N)/k\)</span>，故楔子为 <span class="arithmatex">\((s - \ell/N)/k\)</span>。
+* 若 <span class="arithmatex">\(k + \ell/N \le s\)</span>，则 <span class="arithmatex">\(\alpha^{NE} = 1\)</span>，故楔子为 1。</p>
 </li>
 </ul>
 </li>
