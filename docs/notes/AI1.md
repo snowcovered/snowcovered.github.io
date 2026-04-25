@@ -44,28 +44,39 @@ $$
 * 失业工人通过再就业或转移支付可恢复 $\eta$ 比例的收入，因此每失业一人，该行业损失 $(1-\eta)w$ 的收入。
 
 **定义单位任务的需求损失 $\ell$：**
-$$\ell := \lambda (1 - \eta) w$$
+
+$$
+\ell := \lambda (1 - \eta) w
+$$
 
 **市场总需求 $D$ 为：**
-$$D(\boldsymbol{\alpha}) = A + \lambda w L N - \ell L N \bar{\alpha}$$
+$D(\boldsymbol{\alpha}) = A + \lambda w L N - \ell L N \bar{\alpha}$
 其中 $\bar{\alpha}$ 为所有企业的平均自动化率。
 
 ### 3. 企业利润
 在完全竞争定价下，单家企业的收入为 $\text{Rev}_i = D / N$。结合成本函数，企业 $i$ 的利润函数可写为：
-$$\pi_i = \Pi_0 + L \left( s \alpha_i - \ell \bar{\alpha} - \frac{k}{2} \alpha_i^2 \right)$$
+
+$$
+\pi_i = \Pi_0 + L \left( s \alpha_i - \ell \bar{\alpha} - \frac{k}{2} \alpha_i^2 \right)
+$$
+
 为了研究纳什均衡，我们将自身决策与对手策略分离：
-$$\pi_i = \Pi_0 + L \left[ \alpha_i \left( s - \frac{\ell}{N} \right) - \frac{k}{2} \alpha_i^2 - \frac{\ell}{N} \sum_{j \neq i} \alpha_j \right]$$
+
+$$
+\pi_i = \Pi_0 + L \left[ \alpha_i \left( s - \frac{\ell}{N} \right) - \frac{k}{2} \alpha_i^2 - \frac{\ell}{N} \sum_{j \neq i} \alpha_j \right]
+$$
 
 > **个人见解：**  这样做其实就是为了后续求一阶导就能直接找到最优解。
 
 ### 4. 目标函数
 作者通过线性加权定义了社会总福利 $S$，其中 $\mu$ 为工人的权重：
-$$S(\mu) = \mu \mathcal{W} + (1 - \mu) \mathcal{K}$$
+$S(\mu) = \mu \mathcal{W} + (1 - \mu) \mathcal{K}$
 其中 $\mathcal{W}$ 为工人总收入，$\mathcal{K}$ 为全行业总利润。即使在 $\mu = 0$（仅关注企业利润）的情况下，由于外部性的存在，纳什均衡下的自动化率依然会显著高于集体最优水平。
 
 ### 5. 均衡求解
 
 我们对企业收益求一阶导，得到：
+
 $$
 \frac{\partial \pi_i}{\partial \alpha_i} = L \left( s - \frac{\ell}{N} - k \alpha_i \right)
 $$
@@ -74,16 +85,28 @@ $$
 
 下面我们会给出最重要的一个proposition: 
 现在定义自动化阈值为：
-$$N^* := \frac{\ell}{s} = \frac{\lambda(1-\eta)w}{w-c} $$
+
+$$
+N^* := \frac{\ell}{s} = \frac{\lambda(1-\eta)w}{w-c} 
+$$
 
 * 如果 $N \le N^*$，则没有企业进行自动化（$\alpha^{NE} = 0$）。
 * 如果 $N > N^*$（等价于 $s > \ell/N$）：
     * (i) 每家企业的严格占优策略（strictly dominant strategy）为：
-        $$\alpha^{NE} = \min((s - \ell/N)/k, 1)$$
+
+        $$
+        \alpha^{NE} = \min((s - \ell/N)/k, 1)
+        $$
     * (ii) 合作最优解（cooperative optimum）为：
-        $$\alpha^{CO} = \min(\max(0, (s - \ell)/k), 1)$$
+
+        $$
+        \alpha^{CO} = \min(\max(0, (s - \ell)/k), 1)
+        $$
     * (iii) 如果 $\ell < s < k + \ell/N$，那么 $\alpha^{NE}$ 和 $\alpha^{CO}$ 均为内点解（interior），且过度自动化楔子（over-automation wedge）为：
-        $$\alpha^{NE} - \alpha^{CO} = \frac{\ell(1 - 1/N)}{k} > 0$$
+    
+        $$
+        \alpha^{NE} - \alpha^{CO} = \frac{\ell(1 - 1/N)}{k} > 0
+        $$
         该值随 $N$ 和 $\ell$ 严格递增，随 $k$ 严格递减。
     * (iv) 如果 $s \le \ell$，则 $\alpha^{CO} = 0$，此时楔子即为 $\alpha^{NE}$：
         * 若 $s < k + \ell/N$，则 $\alpha^{NE} = (s - \ell/N)/k$，故楔子为 $(s - \ell/N)/k$。
