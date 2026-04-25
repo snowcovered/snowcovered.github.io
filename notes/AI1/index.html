@@ -1426,10 +1426,18 @@
 <p>个人观点： 其实这个问题本质上就是一个公地悲剧，接下来我们就会看到。</p>
 </blockquote>
 <h3 id="1">1. 企业设定</h3>
-<p>假设市场上存在 <span class="arithmatex">\(N\)</span> 家完全对称的企业，每家企业拥有 <span class="arithmatex">\(L\)</span> 个任务头寸 。企业需决定自动化率 <span class="arithmatex">\(\alpha_i \in [0,1]\)</span>：
-* 任务 <span class="arithmatex">\(z \in [0, \alpha_i]\)</span> 由 AI 完成，单位成本为 <span class="arithmatex">\(c\)</span> 。
-* 任务 <span class="arithmatex">\(z \in (\alpha_i, 1]\)</span> 由工人完成，单位工资为 <span class="arithmatex">\(w\)</span>（且 <span class="arithmatex">\(0 &lt; c &lt; w\)</span>） 。
-* 引入 AI 会产生二次项的磨合成本<span class="arithmatex">\(\frac{k}{2} L \alpha_i^2\)</span> 。</p>
+<p>假设市场上存在 <span class="arithmatex">\(N\)</span> 家完全对称的企业，每家企业拥有 <span class="arithmatex">\(L\)</span> 个任务头寸 。企业需决定自动化率 <span class="arithmatex">\(\alpha_i \in [0,1]\)</span>：</p>
+<ul>
+<li>
+<p>任务 <span class="arithmatex">\(z \in [0, \alpha_i]\)</span> 由 AI 完成，单位成本为 <span class="arithmatex">\(c\)</span> 。</p>
+</li>
+<li>
+<p>任务 <span class="arithmatex">\(z \in (\alpha_i, 1]\)</span> 由工人完成，单位工资为 <span class="arithmatex">\(w\)</span>（且 <span class="arithmatex">\(0 &lt; c &lt; w\)</span>） 。</p>
+</li>
+<li>
+<p>引入 AI 会产生二次项的磨合成本<span class="arithmatex">\(\frac{k}{2} L \alpha_i^2\)</span> 。</p>
+</li>
+</ul>
 <p>单家企业的生产费用函数：
 $$
 C_i(\alpha_i) = L(\alpha_i c + (1 - \alpha_i)w) + \frac{k}{2} L \alpha_i^2
@@ -1439,9 +1447,15 @@ $$
 C_i = L(w - s \alpha_i) + \frac{k}{2} L \alpha_i^2
 $$ </p>
 <h3 id="2">2. 需求侧</h3>
-<p>社会总需求由基础需求 <span class="arithmatex">\(A\)</span> 和工人的二次消费组成：
-* 工人的<strong>边际消费倾向（MPC）</strong>为 <span class="arithmatex">\(\lambda \in (0, 1]\)</span>。
-* 失业工人通过再就业或转移支付可恢复 <span class="arithmatex">\(\eta\)</span> 比例的收入，因此每失业一人，该行业损失 <span class="arithmatex">\((1-\eta)w\)</span> 的收入。</p>
+<p>社会总需求由基础需求 <span class="arithmatex">\(A\)</span> 和工人的二次消费组成：</p>
+<ul>
+<li>
+<p>工人的<strong>边际消费倾向（MPC）</strong>为 <span class="arithmatex">\(\lambda \in (0, 1]\)</span>。</p>
+</li>
+<li>
+<p>失业工人通过再就业或转移支付可恢复 <span class="arithmatex">\(\eta\)</span> 比例的收入，因此每失业一人，该行业损失 <span class="arithmatex">\((1-\eta)w\)</span> 的收入。</p>
+</li>
+</ul>
 <p><strong>定义单位任务的需求损失 <span class="arithmatex">\(\ell\)</span>：</strong>
 $<span class="arithmatex">\(\ell := \lambda (1 - \eta) w\)</span>$</p>
 <p><strong>市场总需求 <span class="arithmatex">\(D\)</span> 为：</strong>
